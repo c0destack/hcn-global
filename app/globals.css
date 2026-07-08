@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --muted: 241 245 249;
+    --muted-foreground: 71 85 105;
+    --border: 226 232 240;
+    --primary: 30 58 138;
+    --primary-foreground: 255 255 255;
+    --accent: 148 163 184;
+  }
+
+  .dark {
+    --background: 15 23 42;
+    --foreground: 241 245 249;
+    --card: 30 41 59;
+    --card-foreground: 241 245 249;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --border: 51 65 85;
+    --primary: 96 165 250;
+    --primary-foreground: 15 23 42;
+    --accent: 148 163 184;
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-navy text-white hover:bg-brand-navyDark hover:shadow-soft dark:bg-blue-500 dark:hover:bg-blue-400;
+  }
+  .btn-outline {
+    @apply btn border-2 border-brand-navy/20 bg-transparent text-brand-navy hover:border-brand-navy hover:bg-brand-navy hover:text-white dark:border-blue-400/30 dark:text-blue-300 dark:hover:bg-blue-500 dark:hover:text-white;
+  }
+  .card {
+    background-color: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    @apply rounded-2xl border p-6 shadow-sm transition-all duration-300 hover:shadow-soft;
+  }
+  .section {
+    @apply scroll-mt-24 py-20 md:py-28;
+  }
+  .section-title {
+    @apply font-heading text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+  }
+  .eyebrow {
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-brand-navy dark:text-blue-400;
+  }
+  .container-tight {
+    @apply container max-w-6xl;
+  }
+}
+
+.grid-pattern {
+  background-image: linear-gradient(
+      rgba(30, 58, 138, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(30, 58, 138, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.dark .grid-pattern {
+  background-image: linear-gradient(
+      rgba(148, 163, 184, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
